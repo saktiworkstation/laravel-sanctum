@@ -20,5 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('product', [ProductController::class, 'index']);
-Route::post('registerUser', [AuthController::class, 'index']);
+Route::get('/', function () {
+    return response()->json([
+        'status' => true,
+        'message' => 'akses tidak diperbolehkan'
+    ], 401);
+})->name('login');
+
+Route::get('product', [ProductController::class, 'index'])->middleware('auth:sanctum');
+Route::post('registerUser', [AuthController::class, 'registerUser']);
+Route::post('loginUser', [AuthController::class, 'loginUser']);

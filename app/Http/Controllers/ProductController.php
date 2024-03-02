@@ -17,7 +17,7 @@ class ProductController extends Controller
             'status' => true,
             'message' => 'Data ditemukan',
             'data' => $data
-        ]);
+        ], 200);
     }
 
     /**
