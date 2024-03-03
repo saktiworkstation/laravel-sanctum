@@ -64,7 +64,7 @@ class AuthController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'proses login berhasil',
-            'token' => $datauser->createToken('api-product')->plainTextToken,
+            'token' => $datauser->createToken('api-product', ['product-store'])->plainTextToken,
         ]);
     }
 }

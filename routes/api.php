@@ -28,6 +28,6 @@ Route::get('/', function () {
 })->name('login');
 
 Route::get('product', [ProductController::class, 'index'])->middleware('auth:sanctum', 'ability:product-list');
-Route::post('product', [ProductController::class, 'store'])->middleware('auth:sanctum');
+Route::post('product', [ProductController::class, 'store'])->middleware('auth:sanctum', 'ability:product-store');
 Route::post('registerUser', [AuthController::class, 'registerUser']);
 Route::post('loginUser', [AuthController::class, 'loginUser']);
