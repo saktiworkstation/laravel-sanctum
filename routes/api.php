@@ -27,6 +27,7 @@ Route::get('/', function () {
     ], 401);
 })->name('login');
 
-Route::get('product', [ProductController::class, 'index'])->middleware('auth:sanctum');
+Route::get('product', [ProductController::class, 'index'])->middleware('auth:sanctum', 'ability:product-list');
+Route::post('product', [ProductController::class, 'store'])->middleware('auth:sanctum');
 Route::post('registerUser', [AuthController::class, 'registerUser']);
 Route::post('loginUser', [AuthController::class, 'loginUser']);
